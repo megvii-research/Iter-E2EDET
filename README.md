@@ -1,0 +1,64 @@
+## Progressive End-to-End Object Detection in Crowded Scenes
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+![](readme/fig.jpg)
+
+## Introduction
+
+In this paper, we propose a new query-based detection framework for crowd detection. Previous query-based detectors suffer from two drawbacks: first, multiple predictions will be inferred for a single object, typically in crowded scenes; second, the performance saturates as the
+depth of the decoding stage increases. Benefiting from the nature of the one-to-one label assignment rule, we propose a progressive predicting method to address the above issues. Specifically, we first select accepted queries prone to generate true positive predictions, then refine the rest
+noisy queries according to the previously accepted predictions. Experiments show that our method can significantly boost the performance of query-based detectors in crowded scenes. Equipped with our approach, Sparse RCNN achieves 92.0% AP, 41.4% MR^−2 and 83.2% JI on the challenging [CrowdHuman]() dataset, outperforming the box-based method MIP that specifies in handling crowded scenarios. Moreover, the proposed method, robust to crowdedness, can still obtain consistent improvements on moderately and slightly crowded datasets like CityPersons and COCO.
+
+## Installation
+The codebases are built on top of [Detectron2](https://github.com/facebookresearch/detectron2) and [Sparse RCNN](https://github.com/PeizeSun/SparseR-CNN).
+
+#### Requirements
+- Linux or macOS with Python ≥ 3.6
+- PyTorch ≥ 1.5 and [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
+  You can install them together at [pytorch.org](https://pytorch.org) to make sure of this
+- OpenCV is optional and needed by demo and visualization
+
+#### Steps
+1. Install and build libs
+```
+git clone https://github.com/megvii-model/Iter-E2EDET.git
+cd Iter-E2EDET
+python3 setup.py build develop
+```
+
+2. Load the CrowdHuman images from [here](https://www.crowdhuman.org/download.html) its annotations from [here](https://drive.google.com/file/d/1590h2fo7NJgLOJQiEPinZPbLMPDS1kw9/view?usp=sharing). Then update the directory path of the CrowdHuman dataset in the config.py.
+```
+vim config.py
+imgDir = 'CrowdHuman/images'
+json_dir = 'CrowdHuman/annotations'
+```
+
+3. Train Iter SparseR-CNN
+```
+python3 train_net.py --num-gpus 8 \
+    --config-file configs/50e.6h.500pro.ignore.yaml
+
+```
+
+4. Evaluate Iter SparseR-CNN. You can download the pre-trained model from [here](https://drive.google.com/file/d/1LTP-Qfe6QsnhCOL3e-lxuuXEqfJ55sgj/view?usp=sharing) for direct evaluation.
+```
+-- python3 train_net.py --num-gpus 8 \
+    --config-file configs/50e.6h.500pro.ignore.yaml \
+    --eval-only MODEL.WEIGHTS path/to/model.pth
+```
+
+## License
+
+Iter Sparse RCNN is released under MIT License.
+
+
+## Citing
+
+If you use our work in your research or wish to refer to the baseline results published here, please use the following BibTeX entries:
+
+```BibTeX
+
+
+```
+>>>>>>> 079ba1dee0d87fd0306502d90b09481f530c533b
