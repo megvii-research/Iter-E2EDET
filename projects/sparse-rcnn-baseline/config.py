@@ -1,15 +1,17 @@
-# -*- coding: utf-8 -*-
-#
-# Modified by Peize Sun, Rufeng Zhang
+# !/usr/bin/env python3
+# ------------------------------------------------------------------------
+# Copyright (c) 2021 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from Sparse-RCNN(github: https://github.com/PeizeSun/SparseR-CNN) created by Peize Sun, Rufeng Zhang
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
-#
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+# ------------------------------------------------------------------------
 import os,sys
 import getpass
 import os.path as osp
 import numpy as np
 from detectron2.config import CfgNode as CN
-import pdb
+
 def add_sparsercnn_config(cfg):
     """
     Add config for SparseRCNN.

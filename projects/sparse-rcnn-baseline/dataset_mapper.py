@@ -1,14 +1,14 @@
-#
-# Modified by Peize Sun, Rufeng Zhang
+# !/usr/bin/env python3
+# ------------------------------------------------------------------------
+# Copyright (c) 2021 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from Sparse-RCNN(github: https://github.com/PeizeSun/SparseR-CNN) created by Peize Sun, Rufeng Zhang
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
-#
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
-import copy
-import logging
-
+# ------------------------------------------------------------------------
+import logging, copy
 import numpy as np
 import torch
-
 from detectron2.data import detection_utils as utils
 from detectron2.data import transforms as T
 from detectron2.data.transforms import TransformGen

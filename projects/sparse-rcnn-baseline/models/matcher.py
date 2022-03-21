@@ -1,12 +1,15 @@
-#
-# Modified by Peize Sun, Rufeng Zhang
+# !/usr/bin/env python3
+# ------------------------------------------------------------------------
+# Copyright (c) 2021 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from Sparse-RCNN(github: https://github.com/PeizeSun/SparseR-CNN) created by Peize Sun, Rufeng Zhang
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
-#
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+# ------------------------------------------------------------------------
 """
 SparseRCNN model and criterion classes.
 """
-import torch, pdb
+import torch
 import torch.nn.functional as F
 from torch import nn
 from fvcore.nn import sigmoid_focal_loss_jit
