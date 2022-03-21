@@ -11,10 +11,14 @@ depth of the decoding stage increases. Benefiting from the nature of the one-to-
 noisy queries according to the previously accepted predictions. Experiments show that our method can significantly boost the performance of query-based detectors in crowded scenes. Equipped with our approach, Sparse RCNN achieves 92.0% AP, 41.4% MR^−2 and 83.2% JI on the challenging [CrowdHuman]() dataset, outperforming the box-based method MIP that specifies in handling crowded scenarios. Moreover, the proposed method, robust to crowdedness, can still obtain consistent improvements on moderately and slightly crowded datasets like CityPersons and COCO.
 
 ## Models
-Method | AP | MR | JI 
---- |:---:|:---:|:---:
-Sparse RCNN | xx | xx | xx | 
-Deformable DETR | xx | xx | xx
+
+Experiments of different methods were conducted on CrowdHuman. All approaches take [R-50](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf) as the backbone.
+Method | #queries | AP | MR | JI 
+--- |:---:|:---:|:---:|:---:
+[Sparse RCNN](https://arxiv.org/pdf/2011.12450.pdf) | 500 | 90.7 | 44.7 | 81.4 | 
+[Deformable DETR](https://arxiv.org/pdf/2010.04159.pdf) | 1000 | 91.5 | 43.7 | 83.1
+[Sparse RCNN](https://arxiv.org/pdf/2011.12450.pdf) + Ours | 500 | 92.0 | 41.4 | 83.2
+[Deformable DETR](https://arxiv.org/pdf/2010.04159.pdf) + Ours | 1000 | 92.1 | 41.5 | 84.0
 ## Installation
 The codebases are built on top of [Detectron2](https://github.com/facebookresearch/detectron2) and [Sparse RCNN](https://github.com/PeizeSun/SparseR-CNN).
 
