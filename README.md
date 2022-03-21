@@ -15,10 +15,11 @@ noisy queries according to the previously accepted predictions. Experiments show
 Experiments of different methods were conducted on CrowdHuman. All approaches take [R-50](detectron2://ImageNetPretrained/torchvision/R-50.pkl) as the backbone.
 Method | #queries | AP | MR | JI 
 :---:|:---:|:---:|:---:|:---:
-[Sparse RCNN](https://arxiv.org/pdf/2011.12450.pdf) | 500 | 90.7 | 44.7 | 81.4 
-[Deformable DETR](https://arxiv.org/pdf/2010.04159.pdf) | 1000 | 91.5 | 43.7 | 83.1
-[Sparse RCNN](https://arxiv.org/pdf/2011.12450.pdf) + Ours | 500 | 92.0 | 41.4 | 83.2
-[Deformable DETR](https://arxiv.org/pdf/2010.04159.pdf) + Ours | 1000 | 92.1 | 41.5 | 84.0
+(CrowdDet](https://openaccess.thecvf.com/content_CVPR_2020/papers/Chu_Detection_in_Crowded_Scenes_One_Proposal_Multiple_Predictions_CVPR_2020_paper.pdf) | -- | 90.7 | 41.4 | 82.4
+Sparse RCNN | 500 | 90.7 | 44.7 | 81.4 
+Deformable DETR | 1000 | 91.5 | 43.7 | 83.1
+Sparse RCNN + Ours | 500 | 92.0 | 41.4 | 83.2
+Deformable DETR + Ours | 1000 | 92.1 | 41.5 | 84.0
 ## Installation
 The codebases are built on top of [Detectron2](https://github.com/facebookresearch/detectron2) and [Sparse RCNN](https://github.com/PeizeSun/SparseR-CNN).
 
