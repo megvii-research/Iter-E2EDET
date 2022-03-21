@@ -16,12 +16,12 @@ Copy-paste from torch.nn.Transformer with modifications:
 """
 import copy, math
 from typing import Optional, List
-import torch, pdb
+import torch
 from torch import nn, Tensor
 import torch.nn.functional as F
+from .rcnn_head import build_rcnn_head
 from detectron2.modeling.poolers import ROIPooler, cat
 from detectron2.structures import Boxes
-from .rcnn_head import build_rcnn_head
 from .shared_head import build_iter_rcnn_head
 
 _DEFAULT_SCALE_CLAMP = math.log(100000.0 / 16)
@@ -151,6 +151,7 @@ class DynamicHead(nn.Module):
 
         return class_logits[None], pred_bboxes[None], inter_containers
 
-def _get_clones(module, N):
 
+def _get_clones(module, N):
+    
     return nn.ModuleList([copy.deepcopy(module) for i in range(N)])

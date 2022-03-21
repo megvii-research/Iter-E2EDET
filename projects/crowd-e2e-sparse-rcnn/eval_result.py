@@ -1,6 +1,10 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 # ------------------------------------------------------------------------
 # Copyright (c) 2021 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from Sparse-RCNN(github: https://github.com/PeizeSun/SparseR-CNN) created by Peize Sun, Rufeng Zhang
+# Contact: {sunpeize, cxrfzhang}@foxmail.com
+# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # ------------------------------------------------------------------------
 from config import config
 from common import *
@@ -20,7 +24,6 @@ def computeJaccard(fpath, save_path ='results.md'):
         fid.write(line + '\n')
         fid.flush()
     fid.close()
-
 
 def computeIoUs(fpath, score_thr = 0.1, save_file='record.txt'):
     

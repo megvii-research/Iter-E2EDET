@@ -28,6 +28,7 @@ from utils.box_ops import box_iou
 
 _DEFAULT_SCALE_CLAMP = math.log(100000.0 / 16)
 
+
 class IterRCNNHead(nn.Module):
 
     def __init__(self, cfg, d_model, num_classes, dim_feedforward=2048, nhead=8, dropout=0.1, activation="relu",
@@ -35,6 +36,8 @@ class IterRCNNHead(nn.Module):
         super().__init__()
 
         self.d_model = d_model
+
+
         self.confidence_score = cfg.MODEL.SparseRCNN.CONFIDENCE_THR
         self.watershed = cfg.MODEL.SparseRCNN.WATERSHED
         self.low_confidence_score = cfg.MODEL.SparseRCNN.LOW_CONFIDENCE_THR
@@ -145,7 +148,6 @@ class IterRCNNHead(nn.Module):
         roi_features = roi_features.view(N * nr_boxes, self.d_model, -1).permute(2, 0, 1)
         
         overlaps = self.compute_overlaps(bboxes)
-
         target = {'tgt': pro_features, 'ious': overlaps}
         
         # construct the relationship.
@@ -182,7 +184,6 @@ class IterRCNNHead(nn.Module):
         class_logits, _ = self._predict(fc_feature)
 
         class_logits = class_logits.view(N, nr_boxes, -1)
-        cls_scores = class_logits.sigmoid().max(dim=-1, keepdim=True)[0]
 
         tmp_container = container.copy()
         tmp = {'class_logits': class_logits, 'mask': cur_all_mask, 'pro_features': obj_features}
@@ -191,7 +192,6 @@ class IterRCNNHead(nn.Module):
         return tmp_container
 
     def apply_deltas(self, deltas, boxes):
-        
         """
         Apply transformation `deltas` (dx, dy, dw, dh) to `boxes`.
 
@@ -236,7 +236,6 @@ def build_iter_rcnn_head(cfg, d_model, num_classes, dim_feedforward, nhead, drop
     return IterRCNNHead(cfg, d_model, num_classes, dim_feedforward, nhead, dropout, activation)
 
 def _get_activation_fn(activation):
-    
     """Return an activation function given a string"""
     if activation == "relu":
         return F.relu

@@ -5,4 +5,4 @@ rm -rf output/log.txt.*
 python3 train_net.py --num-gpus 4   \
     --config-file configs/50e.6h.500pro.ignore.yaml \
     --eval-only \
-    MODEL.WEIGHTS output/model_0049999.pth
+    MODEL.WEIGHTS output/model_0039999.pth

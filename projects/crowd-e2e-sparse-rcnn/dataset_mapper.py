@@ -6,15 +6,14 @@
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # ------------------------------------------------------------------------
-import copy, logging
+import copy
+import logging, torch
 import numpy as np
-import torch
 from detectron2.data import detection_utils as utils
 from detectron2.data import transforms as T
 from detectron2.data.transforms import TransformGen
 
 __all__ = ["SparseRCNNDatasetMapper"]
-
 
 def build_transform_gen(cfg, is_train):
     """

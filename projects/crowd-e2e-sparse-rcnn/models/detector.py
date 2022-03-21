@@ -13,13 +13,13 @@ import torch, pdb
 import torch.distributed as dist
 import torch.nn.functional as F
 from torch import nn
-from config import config
 from detectron2.layers import ShapeSpec
 from detectron2.modeling import META_ARCH_REGISTRY, build_backbone, detector_postprocess
 from detectron2.modeling.roi_heads import build_roi_heads
 from detectron2.structures import Boxes, ImageList, Instances
 from detectron2.utils.logger import log_first_n
 from fvcore.nn import giou_loss, smooth_l1_loss
+from config import config
 from .loss import build_set_criterion
 from .matcher import build_matcher
 from .head import DynamicHead
@@ -99,6 +99,7 @@ class SparseRCNN(nn.Module):
     def parse_output(self, containers):
 
         if len(containers) <= self.watershed - 1:
+            
             c = containers[-1]
             output = {'pred_logits':c['class_logits'], 'pred_boxes': c['bboxes']}
         
@@ -137,18 +138,16 @@ class SparseRCNN(nn.Module):
         # Feature Extraction.
         src = self.backbone(images.tensor)
         features = [src[f] for f in self.in_features]
-        
         # Prepare Proposals.
         proposal_boxes = self.init_proposal_boxes.weight.clone()
         proposal_boxes = box_cxcywh_to_xyxy(proposal_boxes)
         proposal_boxes = proposal_boxes[None] * images_whwh[:, None, :]
 
         # Prediction. ctns means intermediate containers.
-        outputs_class, outputs_coord, ctns = self.head(features, proposal_boxes,                 \
-                self.init_proposal_features.weight, self.auxi_proposal_features.weight)
+        outputs_class, outputs_coord, ctns = self.head(features, proposal_boxes, self.init_proposal_features.weight, \
+                        self.auxi_proposal_features.weight)
 
         output = self.parse_output(ctns) 
-
         if self.training:
             gt_instances = [x["instances"].to(self.device) for x in batched_inputs]
             gt_ignore = [x["ignore"].to(self.device) for x in batched_inputs]
@@ -248,7 +247,6 @@ class SparseRCNN(nn.Module):
         return results
 
     def preprocess_image(self, batched_inputs):
-        
         """
         Normalize, pad and batch the input images.
         """

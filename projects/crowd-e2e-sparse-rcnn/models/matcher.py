@@ -234,6 +234,7 @@ class HungarianMatcher(nn.Module):
 
         return index, mask
 
+
     @torch.no_grad()
     def match_independently(self, cost, cur_mask, spatial_mask, gather_mask, iou, ign_ioa):
         
@@ -273,16 +274,16 @@ class HungarianMatcher(nn.Module):
         flag = (x1 <= x2).float() * (y1 <= y2).float()
         assert flag.sum() == flag.shape[0]
         
+        # 获取detection boxes的中心点坐标.
         x1y1, x2y2 = dtboxes[..., :2], dtboxes[...,2:4]
         ctrs = 0.5 * (x1y1 + x2y2)
         x, y = torch.split(ctrs, 1, -1)
 
-        a = (x >= x1.transpose(0, 1))
-        b = (y >= y1.transpose(0, 1))
-        c = (x <= x2.transpose(0, 1))
-        d = (y <= y2.transpose(0, 1))
-        mask = (a & b & c & d).float()
-
+        a = (x >= x1.transpose(0, 1)).float()
+        b = (y >= y1.transpose(0, 1)).float()
+        c = (x <= x2.transpose(0, 1)).float()
+        d = (y <= y2.transpose(0, 1)).float()
+        mask = a * b * c * d
         return mask
 
     def _compute_center_range(self, boxes, scale = 1):

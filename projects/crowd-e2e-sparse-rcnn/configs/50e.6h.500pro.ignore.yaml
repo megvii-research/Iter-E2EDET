@@ -1,6 +1,6 @@
 _BASE_: "sparsercnn.crowdhuman.res50.500pro.50e.yaml"
 MODEL:
-  WEIGHTS: '/home/zhenganlin/june/CrowdHuman/R-50.pkl'
+  WEIGHTS: '/home/zhenganlin/june/CrowdHuman/dectron2-R-50.pkl'
   SparseRCNN:
     NUM_HEADS: 6
     IGNORE_THR: 0.7
@@ -13,7 +13,7 @@ SOLVER:
   IMS_PER_BATCH: 16
   BASE_LR: 0.00005 # base learning rate should be double if batch size of images is twice as much.
   STEPS: (37500,) # 15000 / 16 = 937.5
-  MAX_ITER: 50000 #46875
+  MAX_ITER: 55000 #46875
   CHECKPOINT_PERIOD: 5000
 TEST:
   EVAL_PERIOD: 5000

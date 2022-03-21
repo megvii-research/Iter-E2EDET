@@ -6,10 +6,10 @@
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # ------------------------------------------------------------------------
+from detectron2.config import CfgNode as CN
 import os, sys
 import pdb, getpass
 import os.path as osp
-from detectron2.config import CfgNode as CN
 
 def add_sparsercnn_config(cfg):
     """

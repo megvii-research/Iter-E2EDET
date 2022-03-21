@@ -4,5 +4,4 @@ rm -rf output/events*
 rm -rf output/log.txt.*
 python3 train_net.py --num-gpus 8   \
     --config-file configs/50e.6h.500pro.ignore.yaml \
-    # --resume \
-    # MODEL.WEIGHTS output/model_0049999.pth
+    --resume

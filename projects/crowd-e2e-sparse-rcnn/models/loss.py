@@ -6,11 +6,10 @@
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # ------------------------------------------------------------------------
-
 """
 SparseRCNN model and criterion classes.
 """
-import torch, pdb
+import torch
 import numpy as np
 import torch.nn.functional as F
 from torch import nn
@@ -20,7 +19,6 @@ from utils.misc import (NestedTensor, nested_tensor_from_tensor_list,
                        accuracy, get_world_size, interpolate,
                        is_dist_avail_and_initialized)
 from utils.box_ops import box_cxcywh_to_xyxy, generalized_box_iou, box_ioa, box_iou
-from utils.infrastructure import minimumWeightMatching
 from scipy.optimize import linear_sum_assignment
 
 def build_set_criterion(cfg, num_classes, matcher, weight_dict, eos_coef, losses, use_focal=True):
@@ -148,6 +146,7 @@ class SetCriterion(nn.Module):
         assert loss in loss_map, f'do you really want to compute {loss} loss?'
         return loss_map[loss](outputs, targets, indices, num_boxes, **kwargs)
 
+    
     def forward(self, outputs, targets):
 
         # Compute the average number of target boxes accross all nodes, for normalization purposes

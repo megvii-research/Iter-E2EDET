@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 # ------------------------------------------------------------------------
 # Copyright (c) 2021 megvii-model. All Rights Reserved.
 # ------------------------------------------------------------------------
-import os,sys
+import os, sys
 import torch, pdb
 import numpy as np
-from config import config
 import torch.nn.functional as F
 from torch import nn, Tensor
 from torch.nn.init import xavier_uniform_, constant_, uniform_, normal_
+from config import config
 from utils.box_ops import box_iou
 
 class RelationNet(nn.Module):
@@ -42,7 +42,7 @@ class RelationNet(nn.Module):
         assert boxes.shape[-1] >= 4
         hw = boxes[..., 2:4] - boxes[..., :2]
         return hw
-
+        
     @torch.no_grad()
     def sin_cos_encoder_v2(self, boxes, mask, indices):
         
@@ -98,7 +98,7 @@ class RelationNet(nn.Module):
         
         return wave_features
     
-    def _extract_position_embedding(self, position_mat, num_pos_feats=64,temperature=1000,):
+    def _extract_position_embedding(self, position_mat, num_pos_feats=64,temperature=1000):
 
         num_pos_feats = 128
         temperature = 10000

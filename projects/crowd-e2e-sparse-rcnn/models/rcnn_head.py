@@ -96,7 +96,7 @@ class RCNNHead(nn.Module):
         bboxes_deltas = self.bboxes_delta(reg_feature)
 
         return class_logits, bboxes_deltas
-
+    # def forward(self, features, bboxes, pro_features, pooler):
     def forward(self, features, container):
         """
         :param bboxes: (N, nr_boxes, 4)
@@ -143,7 +143,7 @@ class RCNNHead(nn.Module):
         gather_mask = alive_mask = torch.zeros(N, nr_boxes, 1).to(device)
 
         if level >= self.watershed - 1:
-            cls_score = class_logits.sigmoid().max(dim=-1, keepdim=True)[0]
+            cls_score, _ = class_logits.sigmoid().max(dim=-1, keepdim=True)
             gather_mask = alive_mask = (cls_score >= self.confidence_score).float()
             next_mask = (1 - alive_mask) * (cls_score >= self.low_confidence_score).float()
 
@@ -194,8 +194,8 @@ class RCNNHead(nn.Module):
 
         return pred_boxes
 
-
 def _get_activation_fn(activation):
+
     """Return an activation function given a string"""
     if activation == "relu":
         return F.relu

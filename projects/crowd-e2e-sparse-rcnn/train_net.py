@@ -6,7 +6,6 @@
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # ------------------------------------------------------------------------
-
 """
 SparseRCNN Training Script.
 
@@ -24,6 +23,7 @@ from detectron2.data import MetadataCatalog, build_detection_train_loader
 from detectron2.engine import AutogradProfiler, DefaultTrainer, default_argument_parser, default_setup, launch
 from detectron2.evaluation import COCOEvaluator, verify_results
 from detectron2.solver.build import maybe_add_gradient_clipping
+
 from config import add_sparsercnn_config
 from dataset_mapper import SparseRCNNDatasetMapper
 from models.detector import SparseRCNN
@@ -99,6 +99,7 @@ class Trainer(DefaultTrainer):
             optimizer = maybe_add_gradient_clipping(cfg, optimizer)
         return optimizer
 
+
 def setup(args):
     """
     Create configs and perform basic setups.
@@ -110,7 +111,6 @@ def setup(args):
     cfg.freeze()
     default_setup(cfg, args)
     return cfg
-
 
 def main(args):
     cfg = setup(args)
@@ -126,6 +126,7 @@ def main(args):
     trainer = Trainer(cfg)
     trainer.resume_or_load(resume=args.resume)
     return trainer.train()
+
 
 if __name__ == "__main__":
     args = default_argument_parser().parse_args()

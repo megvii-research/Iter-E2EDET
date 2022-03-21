@@ -6,11 +6,12 @@
 # Contact: {sunpeize, cxrfzhang}@foxmail.com
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # ------------------------------------------------------------------------
-import copy, math
+import math, copy
 from typing import Optional, List
 import torch, pdb
 from torch import nn, Tensor
 import torch.nn.functional as F
+from config import config
 from detectron2.modeling.poolers import ROIPooler, cat
 from detectron2.structures import Boxes
 
