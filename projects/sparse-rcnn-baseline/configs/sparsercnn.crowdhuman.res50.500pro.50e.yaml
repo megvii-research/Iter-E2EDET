@@ -1,6 +1,6 @@
 _BASE_: "Base-SparseRCNN.yaml"
 MODEL:
-  WEIGHTS: "/home/zhenganlin/june/CrowdHuman/R-50.pkl"
+  WEIGHTS: "detectron2://ImageNetPretrained/torchvision/R-50.pkl"
   RESNETS:
     DEPTH: 50
     STRIDE_IN_1X1: False

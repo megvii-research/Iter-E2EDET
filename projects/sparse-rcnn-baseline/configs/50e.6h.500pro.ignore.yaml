@@ -1,6 +1,6 @@
-_BASE_: "sparsercnn.crowdhuman.res50.500pro.50e.yaml"
+_BASE_: "detectron2://ImageNetPretrained/torchvision/R-50.pkl"
 MODEL:
-  WEIGHTS: "/home/zhenganlin/june/CrowdHuman/dectron2-R-50.pkl"
+  WEIGHTS: ""
   SparseRCNN:
     NUM_HEADS: 6
     IGNORE_THR: 0.7
