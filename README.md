@@ -68,7 +68,12 @@ Iter Sparse RCNN is released under MIT License.
 If you use our work in your research or wish to refer to the baseline results published here, please use the following BibTeX entries:
 
 ```BibTeX
-
+@article{2022iterdetr,
+  title   =  {Progressive End-to-End Object Detection in Crowded Scenes},
+  author  =  {Anlin Zheng and Yuang Zhang and Xiangyu Zhang and Xiaojuan Qi and Jian Sun},
+  journal =  {arXiv preprint arXiv:arXiv:2203.07669v1},
+  year    =  {2022}
+}
 
 ```
 >>>>>>> 079ba1dee0d87fd0306502d90b09481f530c533b
