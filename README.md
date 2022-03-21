@@ -15,7 +15,7 @@ noisy queries according to the previously accepted predictions. Experiments show
 Experiments of different methods were conducted on CrowdHuman. All approaches take [R-50](detectron2://ImageNetPretrained/torchvision/R-50.pkl) as the backbone.
 Method | #queries | AP | MR | JI 
 :---:|:---:|:---:|:---:|:---:
-(CrowdDet](https://openaccess.thecvf.com/content_CVPR_2020/papers/Chu_Detection_in_Crowded_Scenes_One_Proposal_Multiple_Predictions_CVPR_2020_paper.pdf) | -- | 90.7 | 41.4 | 82.4
+[CrowdDet](https://openaccess.thecvf.com/content_CVPR_2020/papers/Chu_Detection_in_Crowded_Scenes_One_Proposal_Multiple_Predictions_CVPR_2020_paper.pdf) | -- | 90.7 | 41.4 | 82.4
 Sparse RCNN | 500 | 90.7 | 44.7 | 81.4 
 Deformable DETR | 1000 | 91.5 | 43.7 | 83.1
 Sparse RCNN + Ours | 500 | 92.0 | 41.4 | 83.2
