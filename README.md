@@ -37,7 +37,7 @@ cd Iter-E2EDET
 python3 setup.py build develop
 ```
 
-2. Load the CrowdHuman images from [here](https://www.crowdhuman.org/download.html) and its annotations from [here](https://drive.google.com/file/d/1590h2fo7NJgLOJQiEPinZPbLMPDS1kw9/view?usp=sharing). Then update the directory path of the CrowdHuman dataset in the config.py.
+2. Load the CrowdHuman images from [here](https://www.crowdhuman.org/download.html) and its annotations from [here](https://drive.google.com/file/d/11TKQWUNDf63FbjLHU9iEASm2nE7exgF8/view?usp=sharing). Then update the directory path of the CrowdHuman dataset in the config.py.
 ```
 vim config.py
 imgDir = 'CrowdHuman/images'
