@@ -46,6 +46,7 @@ json_dir = 'CrowdHuman/annotations'
 
 3. Train Iter SparseR-CNN
 ```
+cd projects/crowd-e2e-sparse-rcnn
 python3 train_net.py --num-gpus 8 \
     --config-file configs/50e.6h.500pro.ignore.yaml
 
