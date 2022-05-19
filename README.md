@@ -39,6 +39,7 @@ python3 setup.py build develop
 
 2. Load the CrowdHuman images from [here](https://www.crowdhuman.org/download.html) and its annotations from [here](https://drive.google.com/file/d/11TKQWUNDf63FbjLHU9iEASm2nE7exgF8/view?usp=sharing). Then update the directory path of the CrowdHuman dataset in the config.py.
 ```
+cd projects/crowd-e2e-sparse-rcnn
 vim config.py
 imgDir = 'CrowdHuman/images'
 json_dir = 'CrowdHuman/annotations'
